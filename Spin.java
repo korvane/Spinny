@@ -2,12 +2,12 @@ import javafx.geometry.Point3D;
 import javafx.scene.shape.Line;
 
 public class Spin {
-    private final double speedx = .00005;
-    private final double speedy = .00015;
-    private final double speedz = .0001;
     private double x;
     private double y;
     private double z;
+    private double speedx;
+    private double speedy;
+    private double speedz;
     private Point3D[] vertices;
     private int[][] edges;
     private Line[] linez;
@@ -21,20 +21,25 @@ public class Spin {
     private double dx;
     private double dy;
     private double dz;
-    public Spin (){
+    public Spin (double speedx, double speedy, double speedz){
+        this.speedx = speedx;
+        this.speedy = speedy;
+        this.speedz = speedz;
         cx = 200;
         cy = 200;
         cz = 0;
         size = 100;
         vertices = new Point3D[]{
                 new Point3D(cx - size, cy - size, cz - size),
-                new Point3D(cx - size, cy - size, cz + size),
-                new Point3D(cx - size, cy + size, cz - size),
-                new Point3D(cx - size, cy + size, cz + size),
                 new Point3D(cx + size, cy - size, cz - size),
-                new Point3D(cx + size, cy - size, cz + size),
                 new Point3D(cx + size, cy + size, cz - size),
-                new Point3D(cx + size, cy + size, cz + size)};
+                new Point3D(cx - size, cy + size, cz - size),
+                new Point3D(cx - size, cy - size, cz + size),
+                new Point3D(cx + size, cy - size, cz + size),
+                new Point3D(cx + size, cy + size, cz + size),
+                new Point3D(cx - size, cy + size, cz + size)};
+
+
         edges = new int[][]{{0,1},{1,2},{2,3},{3,0},
                 {4,5},{5,6},{6,7},{7,4},
                 {0,4},{1,5},{2,6},{3,7}};
@@ -59,6 +64,7 @@ public class Spin {
             dy = y;
 
         }
+
         //y axis
         double angle2 = dt*speedy;
         for(int i = 0; i < vertices.length; i++){
@@ -84,6 +90,12 @@ public class Spin {
 
         drawLines();
     }
+    //set location
+    public void setLocation(int cx, int cy){
+        this.cx = cx;
+        this.cy = cy;
+    }
+
     private void drawLines(){
         for(int i = 0; i  < edges.length; i++){
             int startIdx = edges[i][0];

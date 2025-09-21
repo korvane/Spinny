@@ -22,7 +22,7 @@ public class Spinnin extends Application {
             stage.setScene(s);
             stage.show();
 
-            Spin cube = new Spin();
+            Spin cube = new Spin(.001,.001,.001);
             root.getChildren().addAll(cube.getLinez());
             AnimationTimer timer = new AnimationTimer() {
                 int t = 0;
