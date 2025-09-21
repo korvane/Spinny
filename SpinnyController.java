@@ -24,10 +24,10 @@ public class SpinnyController {
             animate(cube);
         }
         else if(e.getSource() == b2){
-            Pyramid pyramid = new Pyramid(50);
-            pyramid.setSpeed(.001);
-            pane.getChildren().addAll(pyramid.getLinez());
-            animate(pyramid);
+            Tetrahedron tetrahedron = new Tetrahedron(50);
+            tetrahedron.setSpeed(.001);
+            pane.getChildren().addAll(tetrahedron.getLinez());
+            animate(tetrahedron);
         }
     }
 
@@ -51,7 +51,7 @@ public class SpinnyController {
         };
         timer.start();
     }
-    private void animate(Pyramid a) {
+    private void animate(Tetrahedron a) {
         AnimationTimer timer = new AnimationTimer() {
             double dt = 1;
             double last = 0;

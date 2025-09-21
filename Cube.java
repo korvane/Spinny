@@ -54,7 +54,6 @@ public class Cube {
         changeCube('x',dt);
         changeCube('y',dt);
         changeCube('z',dt);
-        System.out.println(x +" " + y +"  " +z + " " + dt);
         drawLines();
     }
     //set location

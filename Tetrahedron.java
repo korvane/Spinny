@@ -1,7 +1,7 @@
 import javafx.geometry.Point3D;
 import javafx.scene.shape.Line;
 
-public class Pyramid {
+public class Tetrahedron {
     private double x;
     private double y;
     private double z;
@@ -22,7 +22,7 @@ public class Pyramid {
     private double dy;
     private double dz;
 
-    public Pyramid(int size) {
+    public Tetrahedron(int size) {
         speedx = .01;
         speedy = .01;
         speedz = .01;
@@ -31,10 +31,10 @@ public class Pyramid {
         cz = 0;
         this.size = size;
         vertices = new Point3D[]{
-                new Point3D(cx, cy, cz + size),
-                new Point3D(cx + size, cy - size, cz),
-                new Point3D(cx - size, cy + size, cz),
-                new Point3D(cx + size, cy + size, cz)};
+                new Point3D(cx+size, cy+size, cz + size),
+                new Point3D(cx + size, cy - size, cz-size),
+                new Point3D(cx - size, cy + size, cz - size),
+                new Point3D(cx - size, cy - size, cz + size)};
 
 
 
