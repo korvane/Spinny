@@ -1,9 +1,14 @@
-
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
 
 public class Spinnin extends Application {
 
@@ -16,32 +21,14 @@ public class Spinnin extends Application {
 
         try {
 
-            Pane root = new Pane();
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Spinny.fxml"));
+            Parent root = loader.load();
             Scene s = new Scene(root, 400, 400);
             stage.setScene(s);
+            stage.setTitle("Spinning Shapes");
             stage.show();
 
-            Spin cube = new Spin(.001,.001,.001);
-            root.getChildren().addAll(cube.getLinez());
-            AnimationTimer timer = new AnimationTimer() {
-                int t = 0;
-                double dt = 1;
-                double last = 0;
 
-                public void handle(long now) {
-                    if (last < 0) {
-                        last = now;
-                        return;
-                    }
-                    dt = (now - last) / 1_000_000.0;
-                    last = now;
-                    cube.run(dt);
-
-
-                }
-            };
-            timer.start();
         }catch(Exception e){
             System.out.println("......    ");
             e.printStackTrace();
