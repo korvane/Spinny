@@ -9,8 +9,9 @@
    <children>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
          <children>
-            <Button fx:id="b1" onAction="#handleClick" prefWidth="100.0" text="Cube" />
-            <Button fx:id="b2" onAction="#handleClick" prefWidth="100.0" text="Tetrahedron" />
+            <Button onAction="#handlePressed" prefWidth="100.0" text="cube" />
+            <Button onAction="#handlePressed" prefWidth="100.0" text="tetrahedron" />
+            <Button mnemonicParsing="false" prefWidth="100.0" text="pyramid" onAction="#handlePressed"/>
          </children>
       </VBox>
       <Pane fx:id="pane" prefHeight="400.0" prefWidth="300.0" HBox.hgrow="NEVER" />

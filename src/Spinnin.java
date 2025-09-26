@@ -1,3 +1,5 @@
+package src;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,6 +24,9 @@ public class Spinnin extends Application {
             stage.setScene(s);
             stage.setTitle("Spinning Shapes");
             stage.show();
+
+
+
 
 
         }catch(Exception e){

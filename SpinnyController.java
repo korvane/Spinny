@@ -3,6 +3,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import src.ShapeMaker;
 
 public class SpinnyController {
     @FXML
@@ -13,64 +14,50 @@ public class SpinnyController {
     @FXML
     private Pane pane;
 
+    private AnimationTimer timer;
+
+
     @FXML
-    private void handleClick(ActionEvent e){
+    private void handlePressed(ActionEvent e){
+
         pane.getChildren().clear();
-        if(e.getSource() == b1) {
-            Cube cube = new Cube(30);
-            cube.setSpeed(.001);
-            pane.getChildren().addAll(cube.getLinez());
 
-            animate(cube);
-        }
-        else if(e.getSource() == b2){
-            Tetrahedron tetrahedron = new Tetrahedron(50);
-            tetrahedron.setSpeed(.001);
-            pane.getChildren().addAll(tetrahedron.getLinez());
-            animate(tetrahedron);
-        }
+        Button tmp = (Button)e.getSource();
+        String name  = tmp.getText();
+
+        ShapeMaker s = new ShapeMaker(name);
+        s.setSpeed(.001);
+        pane.getChildren().addAll(s.getLinez());
+        animate(s);
     }
 
-    private void animate(Cube a) {
-        AnimationTimer timer = new AnimationTimer() {
+    private void animate(ShapeMaker a) {
+        if(timer!=null){
+            timer.stop();
+        }
+        timer = new AnimationTimer() {
             double dt = 1;
             double last = 0;
+            int in = 0;
 
             public void handle(long now) {
                 if (last < 0) {
                     last = now;
                     return;
                 }
-                dt = (now - last) / 1_000_000.0;
-                last = now;
-
-                a.run(dt);
-                System.out.println(dt);
-
-            }
-        };
-        timer.start();
-    }
-    private void animate(Tetrahedron a) {
-        AnimationTimer timer = new AnimationTimer() {
-            double dt = 1;
-            double last = 0;
-
-            public void handle(long now) {
-                if (last < 0) {
-                    last = now;
-                    return;
+                in++;
+                if(in==60){
+                    System.out.println("tick");
+                    in=0;
                 }
+
                 dt = (now - last) / 1_000_000.0;
                 last = now;
 
                 a.run(dt);
+
             }
         };
         timer.start();
     }
-
-
-
-
 }
