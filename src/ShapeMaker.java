@@ -94,7 +94,6 @@ public class ShapeMaker {
             double dz;
             dx = vertices[i].getX() - cx;
             dy = vertices[i].getY() - cy;
-            dz = vertices[i].getZ() - cz;
             x = dx * cos(angle) - dy * sin(angle);
             y = dx * sin(angle) + dy * cos(angle);
             vertices[i] = new Point3D(x + cx, y + cy, vertices[i].getZ()); //around z axis
