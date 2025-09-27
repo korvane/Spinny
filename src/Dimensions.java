@@ -11,6 +11,7 @@ import javafx.geometry.Point3D;
 
 /**
  * Stores the Vertices and Edges of each shape as parameters for ShapeMaker
+ * MVC - Model
  */
 public class Dimensions {
     private static final int CX = 200;

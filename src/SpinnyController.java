@@ -15,6 +15,7 @@ import javafx.scene.layout.Pane;
 
 /**
  * FXML Controller
+ * MVC - Controller
  */
 public class SpinnyController {
 

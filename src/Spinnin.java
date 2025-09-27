@@ -17,6 +17,7 @@ import java.io.IOException;
 
 /**
  * Main class
+ * MVC - Bootstrap
  */
 public class Spinnin extends Application {
 

@@ -11,7 +11,8 @@ import javafx.geometry.Point3D;
 import javafx.scene.shape.Line;
 
 /**
- * Shape Drawer and updater
+ * Shape Drawer and updater.
+ * MVC - Model
  */
 public class ShapeMaker {
     private final Point3D[] vertices;
