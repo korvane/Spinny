@@ -1,8 +1,18 @@
+/*
+ * Course: CSC 1020 - 131
+ * Spinning 3D shapes
+ * TestSuite
+ * Name: Korvan Nameni
+ * Last Updated: 9/27/25
+ */
 package src;
 
 import javafx.geometry.Point3D;
 import javafx.scene.shape.Line;
 
+/**
+ * Shape Drawer and updater
+ */
 public class ShapeMaker {
     private final Point3D[] vertices;
     private final int[][] edges;
@@ -13,8 +23,14 @@ public class ShapeMaker {
     private double cy;
     private final double cz;
     private double speed;
+
+    /**
+     * ShapeMaker constructor
+     * @param shape from spinnyController
+     */
     public ShapeMaker(String shape){
-        speed = .001;
+        final double initSpeed = .001; //MSOE Checkstyle's redundancy is making me do this
+        speed = initSpeed;
         int[] strt = Dimensions.getStart();
         cx = strt[0];
         cy = strt[1];
@@ -27,15 +43,21 @@ public class ShapeMaker {
             linez[i] = new Line();
         }
     }
+
+    /**
+     * update for the AnimationTimer in SpinnyController
+     * @param dt Change in time
+     */
     public void run(double dt){
-//        changeCube('x',dt);
-//        changeCube('y',dt);
-//        changeCube('z',dt);
-        //
         changeCube(dt);
         drawLines();
     }
-    //set location
+
+    /**
+     * set location of shapes
+     * @param cx center x
+     * @param cy center y
+     */
     public void setLocation(int cx, int cy){
         this.cx = cx;
         this.cy = cy;
@@ -43,11 +65,13 @@ public class ShapeMaker {
     public void setSpeed(double speed){
         this.speed = speed;
     }
-
+    public double getSpeed(){
+        return speed;
+    }
     private void drawLines(){
-        for(int i = 0; i  < edges.length; i++){
+        for(int i = 0; i < edges.length; i++){
             int startIdx = edges[i][0];
-            int endIdx   = edges[i][1];
+            int endIdx = edges[i][1];
             Point3D p1 = vertices[startIdx];
             Point3D p2 = vertices[endIdx];
             linez[i].setStartX(p1.getX());
@@ -56,16 +80,18 @@ public class ShapeMaker {
             linez[i].setEndY(p2.getY());
         }
     }
-    public double getSpeed(){
-        return speed;
-    }
+
 
     private void changeCube(double dt){
         double angle = dt * speed;
 
         for (int i = 0; i < vertices.length; i++) {
-            double x,y,z;
-            double dx,dy,dz;
+            double x;
+            double y;
+            double z;
+            double dx;
+            double dy;
+            double dz;
             dx = vertices[i].getX() - cx;
             dy = vertices[i].getY() - cy;
             dz = vertices[i].getZ() - cz;

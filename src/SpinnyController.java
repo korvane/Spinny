@@ -1,20 +1,30 @@
+/*
+ * Course: CSC 1020 - 131
+ * Spinning 3D shapes
+ * TestSuite
+ * Name: Korvan Nameni
+ * Last Updated: 9/27/25
+ */
+
+package src;
 import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
-import src.ShapeMaker;
 
+/**
+ * FXML Controller
+ */
 public class SpinnyController {
-    @FXML
-    private Button b1;
-    @FXML
-    private Button b2;
 
     @FXML
     private Pane pane;
 
     private AnimationTimer timer;
+    private final double toMilliseconds = 1_000_000;
+    private double dt;
+    private double last;
 
 
     @FXML
@@ -23,10 +33,9 @@ public class SpinnyController {
         pane.getChildren().clear();
 
         Button tmp = (Button)e.getSource();
-        String name  = tmp.getText();
+        String name = tmp.getText();
 
         ShapeMaker s = new ShapeMaker(name);
-        s.setSpeed(.001);
         pane.getChildren().addAll(s.getLinez());
         animate(s);
     }
@@ -36,22 +45,12 @@ public class SpinnyController {
             timer.stop();
         }
         timer = new AnimationTimer() {
-            double dt = 1;
-            double last = 0;
-            int in = 0;
-
             public void handle(long now) {
                 if (last < 0) {
                     last = now;
-                    return;
-                }
-                in++;
-                if(in==60){
-                    System.out.println("tick");
-                    in=0;
                 }
 
-                dt = (now - last) / 1_000_000.0;
+                dt = (now - last) / toMilliseconds;
                 last = now;
 
                 a.run(dt);
