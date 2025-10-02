@@ -17,10 +17,10 @@ import java.util.List;
  * MVC - Model
  */
 public class Dimensions {
-    private static final int CX = 200;
-    private static final int CY = 200;
+    private static final int CX = 275;
+    private static final int CY = 350;
     private static final int CZ = 0;
-    private static final int SIZE = 40;
+    private static final int SIZE = 125;
 
     // call: int[][] edges = buildEdges(vertices);
     public static int[][] buildEdges(Point3D[] vertices) {
