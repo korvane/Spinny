@@ -92,7 +92,7 @@ public class ShapeMaker {
             double z;
             double dx;
             double dy;
-            double dz;
+            double dz; //MSOE CheckStyle all these variables separate.
             dx = vertices[i].getX() - cx;
             dy = vertices[i].getY() - cy;
             x = dx * cos(angle) - dy * sin(angle);
@@ -114,11 +114,12 @@ public class ShapeMaker {
     public Line[] getLinez(){
         return linez;
     }
+
+    //dont ask
     private double sin(double x){
         return Math.sin(x);
     }
     private double cos(double x){
         return Math.cos(x);
     }
-
 }

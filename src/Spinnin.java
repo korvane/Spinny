@@ -23,7 +23,7 @@ public class Spinnin extends Application {
 
     @Override
     public void start(Stage stage){
-        final int width = 400;
+        final int width = 700;
         try {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Spinny.fxml"));

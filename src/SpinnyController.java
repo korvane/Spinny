@@ -37,6 +37,7 @@ public class SpinnyController {
         String name = tmp.getText();
 
         ShapeMaker s = new ShapeMaker(name);
+        //s.setSpeed(.005);
         pane.getChildren().addAll(s.getLinez());
         animate(s);
     }
